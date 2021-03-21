@@ -1,0 +1,40 @@
+Inteligentny system zarządzania budynkiem.
+
+Wyświetlacz LCD w normalnym trybie wyświetla datę i godzinę na zmianę z temperaturą i wilgotnością powietrza.
+
+W drzwiach budynku czytnik RFID, elektrorygiel symulowany przez diody (czerwona NC, zielona NO) podłączone do przekaźnika D1 oraz kontaktron spełniający rolę czujnika zamknięcia drzwi.
+
+Na suficie budynku lampy oświetleniowe symulwane przez trzy niebieskie diody podłączne w konfiguracji NO do przekaźnika D2.
+
+Na elewacji budynku sygnalizator alarmowy symulowany przez żółtą diodę i buzzer podłaczone w konfiguracji NO do przekaźnika D3.
+
+Wewnątrz budynku przycisk kasowania alarmu.
+
+Wewnątrz budynku termometr i czujnik wilgoci symulowany przez DHT11.
+
+Wewnątrz budynku czujnik dymu.
+
+Wewnątrz budynku czujnik zalania.
+
+Wewnątrz budynku czujnik ruchu.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Przyłożenie nieuprawnionej karty nie powoduje żadnych działań.
+
+Przyłożenie uprawninej karty powoduje wysłanie impulsu na przekaźnik D1 przez 10 sekund oraz wpisanie do rejestru osób obecnych w budynku.
+
+Jeżeli ilość osób w rejestrze obecnych w budynku będzie równa większa od zera następuje wyzwolenie impulsu na przekaźnik D2. W przypadku gdy liczba ta wynosi zero impuls nie jest wyzwalany.
+
+Przerwanie obwodu kontaktronu w godzinach 5.30-22.00 przy wyzwolonym impulsie na przekaźnik D1 powoduje uruchomienie odliczania. Jeżeli w ciągu 30 sekund obwód kontaktronu nie zostnie ponownie zwarty następuje wyświetlenie na LCD informacji "ALARM DRZWI OTWARTE" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu zwarcia obwodu kontaktronu.
+
+Przerwanie obwodu kontaktronu w godzinach 5.30-22.00 bez wyzwolonego impulsu na przekaźnik D1 powoduje wyświetlenie na LCD informacji "ALARM DRZWI SFORSOWANE" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu zwarcia obwodu kontaktronu i wciśnięcia przycisku kasowania.
+
+Przerwanie obwodu kontaktronu w godzinach 22.00-5.30 powoduje wyświetlenie na LCD informacji "ALARM WLAMANIE" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu wciśnięcia przycisku kasowania.
+
+Wrost temperatury ponad 35 st. C bez sygnału z czujnika dymu powoduje wyświetlenie na LCD informacji "ALARM PRZEGRZANIE" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu spadnięcia temperatury lub wciśnięcia przycisku kasowania.
+
+Wrost temperatury ponad 35 st. C wraz z sygnałem z czujnika dymu powoduje wyświetlenie na LCD informacji "ALARM POŻAR" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu spadnięcia temperatury lub wciśnięcia przycisku kasowania.
+
+Sygnał z czujnika dymu powoduje wyświetlenie na LCD informacji "ALARM POŻAR" i podawanie impulsu na przekaźnik D3 pulsacyjnie. Sytuacja trwa do momentu spadnięcia temperatury lub wciśnięcia przycisku kasowania.
+
