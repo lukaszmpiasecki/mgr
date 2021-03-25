@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import I2C_LCD_driver
 import adafruit_dht as DHT
+#import Adafruit_DHT as DHT
 import board
 import time
 import sys
@@ -23,6 +24,8 @@ MQ2_PIN = 5
 DRZWI_PIN = 17
 ALARM_PIN = 27
 LAMPY_PIN = 22
+
+DHT_SENSOR = DHT.DHT11(DHT_PIN)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIR_PIN, GPIO.IN, GPIO.PUD_DOWN)
@@ -79,8 +82,8 @@ mylcd = I2C_LCD_driver.lcd()
 
 while True:
     mylcd.lcd_clear()
-    mylcd.lcd_display_string("TEMPERATURA %d%sC" % (20, chr(223)), 1, 0)
-    mylcd.lcd_display_string("WILGOTNOSC %d%%" % (50), 2, 0)
+    mylcd.lcd_display_string("TEMPERATURA %d%sC" % (DHT_SENSOR.temperature, chr(223)), 1, 0)
+    mylcd.lcd_display_string("WILGOTNOSC %d%%" % (DHT_SENSOR.humidity), 2, 0)
     time.sleep(5)
     mylcd.lcd_clear()
     now = datetime.datetime.now()
