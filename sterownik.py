@@ -82,8 +82,19 @@ mylcd = I2C_LCD_driver.lcd()
 
 while True:
     mylcd.lcd_clear()
+<<<<<<< HEAD
+    try:
+        temp = DHT_SENSOR.temperature
+        hum = DHT_SENSOR.humidity
+    except RuntimeError:
+        print("ERROR DHT11")
+        continue
+    mylcd.lcd_display_string("TEMPERATURA %d%sC" % (temp, chr(223)), 1, 0)
+    mylcd.lcd_display_string("WILGOTNOSC %d%%" % (hum), 2, 0)
+=======
     mylcd.lcd_display_string("TEMPERATURA %d%sC" % (DHT_SENSOR.temperature, chr(223)), 1, 0)
     mylcd.lcd_display_string("WILGOTNOSC %d%%" % (DHT_SENSOR.humidity), 2, 0)
+>>>>>>> a2c6d08c94e5bbc05c5591eac2ef2601be0233dd
     time.sleep(5)
     mylcd.lcd_clear()
     now = datetime.datetime.now()
