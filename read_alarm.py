@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 import time
-pin = 24
+pin = 27
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin, GPIO.IN)
+GPIO.setup(pin, GPIO.OUT)
 
 while True:
 	x = GPIO.input(pin)
