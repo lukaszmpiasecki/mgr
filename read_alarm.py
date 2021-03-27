@@ -7,5 +7,5 @@ GPIO.setup(pin, GPIO.OUT)
 
 while True:
 	x = GPIO.input(pin)
-	print(x)
+	print("ALARM ", x)
 	time.sleep(1)

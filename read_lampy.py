@@ -1,11 +1,11 @@
 import RPi.GPIO as GPIO
 import time
-pin = 14
+pin = 22
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(pin, GPIO.OUT)
 
 while True:
 	x = GPIO.input(pin)
-	print(x)
+	print("LAMPY ", x)
 	time.sleep(1)
