@@ -1,11 +1,8 @@
+from gpiozero import MotionSensor
 import RPi.GPIO as GPIO
 import time
 pin =16
+pir = MotionSensor(pin)
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin, GPIO.IN)
-
-while True:
-	x = GPIO.input(pin)
-	print(x)
-	time.sleep(1)
+pir.wait_for_motion()
+print("RUCH")

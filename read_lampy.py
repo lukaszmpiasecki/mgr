@@ -7,5 +7,8 @@ GPIO.setup(pin, GPIO.OUT)
 
 while True:
 	x = GPIO.input(pin)
-	print("LAMPY ", x)
+	if x == 0:
+		print("LAMPA SWIECI")
+	else:
+		print("LAMPA ZGASZONA")
 	time.sleep(1)

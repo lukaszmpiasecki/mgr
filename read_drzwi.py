@@ -7,5 +7,8 @@ GPIO.setup(pin, GPIO.IN)
 
 while True:
 	x = GPIO.input(pin)
-	print("DRZWI ", x)
+	if x == 0:
+		print("DRZWI OTWARTE")
+	else:
+		print("DRZWI ZAMKNIETE")
 	time.sleep(1)
