@@ -66,7 +66,7 @@ def drzwi(pin):
                 time.sleep(1)
 
 def wlamanie(pin):
-    h = 23
+    h = 21
     if h < 6 or h > 21:
         while GPIO.input(BUTTON_PIN) == 1:
             mylcd.lcd_clear()
