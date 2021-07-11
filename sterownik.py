@@ -66,7 +66,7 @@ def drzwi(pin):
                 time.sleep(1)
 
 def wlamanie(pin):
-    h = 21
+    h = datetime.datetime.now().strftime("%H")
     if h < 6 or h > 21:
         while GPIO.input(BUTTON_PIN) == 1:
             mylcd.lcd_clear()
@@ -102,8 +102,6 @@ def main_loop():
         mylcd.lcd_clear()
         mylcd.lcd_display_string("TEMPERATURA %d%sC" % (temp, chr(223)), 1, 0)
         mylcd.lcd_display_string("WILGOTNOSC %d%%" % (hum), 2, 0)
-        mylcd.lcd_display_string("TEMPERATURA %d%sC" % (DHT_SENSOR.temperature, chr(223)), 1, 0)
-        mylcd.lcd_display_string("WILGOTNOSC %d%%" % (DHT_SENSOR.humidity), 2, 0)
         time.sleep(10)
         mylcd.lcd_clear()
         now = datetime.datetime.now()

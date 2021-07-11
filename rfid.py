@@ -4,6 +4,13 @@ from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 import time
 
+DRZWI_PIN = 17
+LAMPY_PIN = 22
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(DRZWI_PIN, GPIO.OUT)
+GPIO.output(DRZWI_PIN, 1)
+GPIO.setup(LAMPY_PIN, GPIO.OUT)
+GPIO.output(LAMPY_PIN, 1)
 #Numery tagow RFID
 BRELOK_1 = 85733152491
 KARTA_1 = 219546064077
@@ -26,14 +33,6 @@ def rfid_zapis(nazwa):
         print("Przypisano")
     finally:
         GPIO.cleanup()
-
-DRZWI_PIN = 17
-LAMPY_PIN = 22
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(DRZWI_PIN, GPIO.OUT)
-GPIO.output(DRZWI_PIN, 1)
-GPIO.setup(LAMPY_PIN, GPIO.OUT)
-GPIO.output(LAMPY_PIN, 1)
 
 while True:
 	if rfid_odczyt() in uprawnieni:
